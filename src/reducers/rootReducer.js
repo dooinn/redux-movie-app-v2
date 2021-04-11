@@ -1,10 +1,18 @@
 import { combineReducers } from 'redux';
-import { NowPlayingMovieReducer, SearchMovieReducer } from './movieReducer'
+import {
+    NowPlayingMovieReducer,
+    SearchMovieReducer,
+    PopularMovieReducer,
+    TopRatedMovieReducer,
+    LatestMovieReducer
+} from './movieReducer'
 
 const RootReducer = combineReducers({
-    NowPlaying: NowPlayingMovieReducer,
-    SearchMovie: SearchMovieReducer
-
+    NowPlayingMovie: NowPlayingMovieReducer,
+    SearchMovie: SearchMovieReducer,
+    PopularMovie: PopularMovieReducer,
+    TopRatedMovie: TopRatedMovieReducer,
+    LatestMovie: LatestMovieReducer
 });
 
 export default RootReducer;

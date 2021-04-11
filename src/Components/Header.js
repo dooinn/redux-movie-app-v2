@@ -13,7 +13,6 @@ const Header = () => {
     const [query, setQuery] = useState("");
     const [newSearch, setNewSearch] = useState([]);
     const showModal = () => setModalOpen(!modalOpen);
-    const posterUrl = 'https://image.tmdb.org/t/p/original/';
     const searchResults = useSelector(state => state.SearchMovie);
 
     const onChangeHandler = async (e) => {
@@ -25,11 +24,7 @@ const Header = () => {
 
     useEffect(() => {
         dispatch(GetSearchMovie())
-        console.log('newSearch', newSearch)
     }, [])
-
-
-
 
     // const useLockBodyScroll = () => {
     //     useLayoutEffect(() => {
@@ -43,7 +38,7 @@ const Header = () => {
     // if (modalOpen) {
     //     return useLockBodyScroll();
     // }
-
+    const posterUrl = 'https://image.tmdb.org/t/p/original/';
 
     return (
         <Section>
@@ -55,19 +50,16 @@ const Header = () => {
                     value={query}
                     onChange={onChangeHandler}
                 ></input>
-                {newSearch && (
+                {query && (
                     <div>
-                        {newSearch.map((movie) => (
+                        {searchResults.data.map((movie) => (
                             <div key={movie.id}>
                                 <h1>{movie.title}</h1>
                             </div>
-
-
                         ))}
 
                     </div>
                 )}
-
             </div>
             <NavBar>
                 <div className="logo__container">

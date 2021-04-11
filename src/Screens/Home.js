@@ -1,89 +1,31 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { GetNowPlayingMovie } from '../actions/movieActions'
+import { GetNowPlayingMovie, GetPopularMovie, GetTopRatedMovie, GetLatestMovie } from '../actions/movieActions'
 
 const Home = () => {
 
     const posterUrl = 'https://image.tmdb.org/t/p/original/';
     const dispatch = useDispatch();
-    const nowPlaying = useSelector(state => state.NowPlaying);
+    const nowPlayingMovie = useSelector(state => state.NowPlayingMovie);
+    const popularMovie = useSelector(state => state.PopularMovie);
+    const topRatedMovie = useSelector(state => state.TopRatedMovie);
+    const latestMovie = useSelector(state => state.LatestMovie);
 
     useEffect(() => {
         const fetchAPI = async () => {
             dispatch(GetNowPlayingMovie())
+            dispatch(GetPopularMovie())
+            dispatch(GetTopRatedMovie())
+            dispatch(GetLatestMovie())
         }
         fetchAPI();
     }, [])
 
     return (
         <div>
-            <h1>MCCCC</h1>
-            <h1>MovieClone</h1>
-            <h1>MovieClone</h1>
-            <h1>MovieClone</h1>
-            <h1>MovieClone</h1>
-            <h1>MovieClone</h1>
-            <h1>MovieClone</h1>
-            <h1>MovieClone</h1>
-            <h1>MovieClone</h1>
-            <h1>MovieClone</h1>
-            <h1>MovieClone</h1>
-            <h1>MovieClone</h1>
-            <h1>MovieClone</h1>
-            <h1>MovieClone</h1>
-            <h1>MovieClone</h1>
-            <h1>MovieClone</h1>
-            <h1>MovieClone</h1>
-            <h1>MovieClone</h1>
-            <h1>MovieClone</h1>
-            <h1>MovieClone</h1>
-            <h1>MovieClone</h1>
-            <h1>MovieClone</h1>
-            <h1>MovieClone</h1>
-            <h1>MovieClone</h1>
-            <h1>MovieClone</h1>
-            <h1>MovieClone</h1>
-            <h1>MovieClone</h1>
-            <h1>MovieClone</h1>
-            <h1>MovieClone</h1>
-            <h1>MovieClone</h1>
-            <h1>MovieClone</h1>
-            <h1>MovieClone</h1>
-            <h1>MovieClone</h1>
-            <h1>MovieClone</h1>
-            <h1>MovieClone</h1>
-            <h1>MovieClone</h1>
-            <h1>MovieClone</h1>
-            <h1>MovieClone</h1>
-            <h1>MovieClone</h1>
-            <h1>MovieClone</h1>
-            <h1>MovieClone</h1>
-            <h1>MovieClone</h1>
-            <h1>MovieClone</h1>
-            <h1>MovieClone</h1>
-            <h1>MovieClone</h1>
-            <h1>MovieClone</h1>
-            <h1>MovieClone</h1>
-            <h1>MovieClone</h1>
-            <h1>MovieClone</h1>
-            <h1>MovieClone</h1>
-            <h1>MovieClone</h1>
-            <h1>MovieClone</h1>
-            <h1>MovieClone</h1>
-            <h1>MovieClone</h1>
-            <h1>MovieClone</h1>
-            <h1>MovieClone</h1>
-            <h1>MovieClone</h1>
-            <h1>MovieClone</h1>
-            <h1>MovieClone</h1>
-            <h1>MovieClone</h1>
-            <h1>MovieClone</h1>
-            <h1>MovieClone</h1>
-            <h1>MovieClone</h1>
-            <h1>MovieClone</h1>
 
             <div>
-                {nowPlaying.data.map(el => {
+                {nowPlayingMovie.data.map(el => {
                     return (
                         <div key={el.id}>
                             {/* <img src={posterUrl + el.backdrop_path} /> */}
