@@ -24,6 +24,7 @@ background-size: cover;
 background-position: center;
 position: fixed;
 display: flex;
+flex-direction: column;
 justify-content: center;
 align-items: center;
 transition: 350ms;
@@ -66,9 +67,49 @@ transform: scale(1.2);
     
 }
 
+@media screen and (max-width: 768px){
+    .search__input{
+        width: 100%;
+       
+        
+    }
+}
+
 
 
 `;
+
+export const SearchResultContainer = styled.div`
+width: 100%;
+height: auto;
+display: flex;
+overflow-y: hidden;
+overflow-x: scroll;
+
+&::-webkit-scrollbar{
+    display:none;
+}
+
+.movie__poster{
+    width: 12rem;
+    height: auto;
+    padding: 0.5rem;
+    transition: .3s;
+}
+
+.movie__poster:hover{
+    transform: scale(.95);
+    filter: grayscale(100%);
+}
+
+
+`;
+
+
+
+
+
+
 export const NavBar = styled.nav`
 width: 100%;
 height: 100%;
@@ -131,6 +172,13 @@ align-items:center;
     align-items:center;
 }
 
+@media screen and (max-width: 768px){
+    .search__container{
+        display: none;
+       
+        
+    }
+}
 
 
 

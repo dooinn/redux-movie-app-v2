@@ -20,6 +20,11 @@ import {
     MOVIE_LATEST_REQUEST,
     MOVIE_LATEST_SUCCESS,
     MOVIE_LATEST_FAIL,
+
+    MOVIE_DETAIL_REQUEST,
+    MOVIE_DETAIL_SUCCESS,
+    MOVIE_DETAIL_FAIL
+
 } from '../constants/movieConstants'
 
 const API_KEY = '74af3496125e04547854e2abd22ebe6f';
@@ -55,7 +60,6 @@ export const GetNowPlayingMovie = () => async dispatch => {
         dispatch({
             type: MOVIE_NOWPLAYING_SUCCESS,
             payload: res.data
-
         })
     } catch (e) {
         dispatch({
@@ -75,7 +79,6 @@ export const GetPopularMovie = () => async dispatch => {
         dispatch({
             type: MOVIE_POPULAR_SUCCESS,
             payload: res.data
-
         })
     } catch (e) {
         dispatch({
@@ -123,5 +126,23 @@ export const GetLatestMovie = () => async dispatch => {
         })
     }
 
+}
+
+export const GetMovieDetail = (id) => async dispatch => {
+    try {
+        dispatch({
+            type: MOVIE_DETAIL_REQUEST
+        });
+        const res = await Axios.get(`${BASE_URL}/movie/${id}?api_key=${API_KEY}&language=en-US`);
+        dispatch({
+            type: MOVIE_DETAIL_SUCCESS,
+            payload: res.data
+        })
+        console.log('detail', res.data)
+    } catch (e) {
+        dispatch({
+            type: MOVIE_DETAIL_FAIL,
+        })
+    }
 }
 

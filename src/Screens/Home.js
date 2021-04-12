@@ -4,7 +4,7 @@ import { GetNowPlayingMovie, GetPopularMovie, GetTopRatedMovie, GetLatestMovie }
 
 const Home = () => {
 
-    const posterUrl = 'https://image.tmdb.org/t/p/original/';
+
     const dispatch = useDispatch();
     const nowPlayingMovie = useSelector(state => state.NowPlayingMovie);
     const popularMovie = useSelector(state => state.PopularMovie);
@@ -20,6 +20,8 @@ const Home = () => {
         }
         fetchAPI();
     }, [])
+
+    const posterUrl = 'https://image.tmdb.org/t/p/original/';
 
     return (
         <div>

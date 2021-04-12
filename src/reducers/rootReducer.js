@@ -4,7 +4,8 @@ import {
     SearchMovieReducer,
     PopularMovieReducer,
     TopRatedMovieReducer,
-    LatestMovieReducer
+    LatestMovieReducer,
+    DetailMovieReducer
 } from './movieReducer'
 
 const RootReducer = combineReducers({
@@ -12,7 +13,9 @@ const RootReducer = combineReducers({
     SearchMovie: SearchMovieReducer,
     PopularMovie: PopularMovieReducer,
     TopRatedMovie: TopRatedMovieReducer,
-    LatestMovie: LatestMovieReducer
+    LatestMovie: LatestMovieReducer,
+    DetailMovie: DetailMovieReducer
+
 });
 
 export default RootReducer;

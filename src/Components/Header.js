@@ -2,10 +2,11 @@ import React, { useState, useEffect, useLayoutEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom'
 import { GetSearchMovie } from '../actions/movieActions'
-import { Section, NavBar } from '../styles/HeaderStyle'
+import { Section, SearchResultContainer, NavBar } from '../styles/HeaderStyle'
 import { GiPopcorn } from 'react-icons/gi'
 import { BiSearch } from 'react-icons/bi'
 import { AiOutlineClose } from 'react-icons/ai'
+import { LoadingBox } from './LoadingBox';
 
 const Header = () => {
     const dispatch = useDispatch();
@@ -14,6 +15,7 @@ const Header = () => {
     const [newSearch, setNewSearch] = useState([]);
     const showModal = () => setModalOpen(!modalOpen);
     const searchResults = useSelector(state => state.SearchMovie);
+    const { loading, error, movies } = searchResults;
 
     const onChangeHandler = async (e) => {
         e.preventDefault();
@@ -44,21 +46,33 @@ const Header = () => {
         <Section>
             <div className={modalOpen ? "modal active" : "modal"}  >
                 <AiOutlineClose className="close__btn" onClick={() => showModal()} />
+                <h1 style={{ fontSize: "3rem", color: "white", marginBottom: "2rem" }}>Searh Any Movies!</h1>
                 <input
                     className="search__input"
                     placeholder="Type a movie title!"
                     value={query}
                     onChange={onChangeHandler}
                 ></input>
-                {query && (
-                    <div>
-                        {searchResults.data.map((movie) => (
-                            <div key={movie.id}>
-                                <h1>{movie.title}</h1>
-                            </div>
-                        ))}
+                {loading ? (
+                    <LoadingBox></LoadingBox>
+                ) : error ? (
+                    <p></p>
+                ) : (
+                    <>
+                        {query && (
+                            <SearchResultContainer>
+                                {movies.map((movie) => (
+                                    <Link key={movie.id} to={`/movie/${movie.id}`} onClick={() => showModal()}>
+                                        {movie.poster_path ?
+                                            <img className="movie__poster" src={posterUrl + movie.poster_path} alt={movie.title}></img>
+                                            : <p className="movie__poster">{movie.title}</p>
+                                        }
 
-                    </div>
+                                    </Link>
+                                ))}
+                            </SearchResultContainer>
+                        )}
+                    </>
                 )}
             </div>
             <NavBar>
