@@ -2,9 +2,12 @@ import styled from 'styled-components'
 
 export const Section = styled.nav`
 width: 100vw;
-height: 10vh;
-background-color: black;
+height: 5rem;
+background: #000000;
 position: fixed;
+z-index: 999;
+top: 0;
+left:0;
 
 
 

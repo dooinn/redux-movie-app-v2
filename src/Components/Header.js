@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useLayoutEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom'
 import { GetSearchMovie } from '../actions/movieActions'
@@ -28,18 +28,7 @@ const Header = () => {
         dispatch(GetSearchMovie())
     }, [])
 
-    // const useLockBodyScroll = () => {
-    //     useLayoutEffect(() => {
-    //         const originalStyle = window.getComputedStyle(document.body).overflow;
-    //         document.body.style.overflow = "hidden";
-    //         return () => (document.body.style.overflow = originalStyle);
-    //     }, []);
-    // }
 
-
-    // if (modalOpen) {
-    //     return useLockBodyScroll();
-    // }
     const posterUrl = 'https://image.tmdb.org/t/p/original/';
 
     return (
@@ -67,7 +56,6 @@ const Header = () => {
                                             <img className="movie__poster" src={posterUrl + movie.poster_path} alt={movie.title}></img>
                                             : <p className="movie__poster">{movie.title}</p>
                                         }
-
                                     </Link>
                                 ))}
                             </SearchResultContainer>
