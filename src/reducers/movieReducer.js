@@ -27,6 +27,8 @@ import {
     MOVIE_SIMILAR_REQUEST,
     MOVIE_SIMILAR_SUCCESS,
     MOVIE_SIMILAR_FAIL,
+    ADD_MOVIE_TO_FAVORITE,
+    REMOVE_MOVIE_FROM_FAVORITE
 
 } from '../constants/movieConstants'
 
@@ -147,3 +149,34 @@ export const SimilarMovieReducer = (state = { loading: false, data: [], error: "
             return state
     }
 };
+
+
+
+export const FavoriteMovieReducer = (state = {
+    watchlist: localStorage.getItem("watchlist")
+        ? JSON.parse(localStorage.getItem("watchlist"))
+        : [],
+}, action) => {
+    switch (action.type) {
+        case ADD_MOVIE_TO_FAVORITE:
+            return {
+                ...state,
+                watchlist: [action.payload, ...state.watchlist],
+            };
+        case REMOVE_MOVIE_FROM_FAVORITE:
+            return {
+                ...state,
+                watchlist: state.watchlist.filter(
+                    (movie) => movie.id !== action.payload
+                ),
+            };
+
+        default:
+            return state;
+    }
+}
+
+
+
+
+

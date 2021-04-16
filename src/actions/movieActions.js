@@ -37,6 +37,9 @@ import {
     MOVIE_SIMILAR_SUCCESS,
     MOVIE_SIMILAR_FAIL,
 
+    ADD_MOVIE_TO_FAVORITE,
+    REMOVE_MOVIE_FROM_FAVORITE,
+
 } from '../constants/movieConstants'
 
 const API_KEY = '74af3496125e04547854e2abd22ebe6f';
@@ -143,5 +146,17 @@ export const GetSimilarMovie = (id) => async dispatch => {
     }
 
 }
+
+export const addMovieToFavorite = (movie) => dispatch => (
+    dispatch({ type: ADD_MOVIE_TO_FAVORITE, payload: movie })
+);
+
+
+
+export const removeMovieFromFavorite = (id) => dispatch => (
+    dispatch({ type: REMOVE_MOVIE_FROM_FAVORITE, payload: id })
+);
+
+
 
 

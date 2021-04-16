@@ -8,7 +8,8 @@ import {
     DetailMovieReducer,
     MovieVideoReducer,
     MovieCastsReducer,
-    SimilarMovieReducer
+    SimilarMovieReducer,
+    FavoriteMovieReducer
 } from './movieReducer'
 
 const RootReducer = combineReducers({
@@ -20,7 +21,8 @@ const RootReducer = combineReducers({
     DetailMovie: DetailMovieReducer,
     MovieVideo: MovieVideoReducer,
     MovieCasts: MovieCastsReducer,
-    SimilarMovie: SimilarMovieReducer
+    SimilarMovie: SimilarMovieReducer,
+    FavoriteMovie: FavoriteMovieReducer
 
 });
 

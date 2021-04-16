@@ -17,6 +17,16 @@ margin-top: 5rem;
 
 }
 
+.save__btn{
+    float: right;
+
+    outline: none;
+    border: none;
+    background: transparent;
+  
+
+
+}
 
 .contents__container{
     width: 100%;
@@ -68,11 +78,17 @@ margin-top: 5rem;
 
 }
 
+.similarMovie__container{
+    padding: 1rem;
+}
+
 .similarMovie__wrap{
     width: 100%;
     height: auto;
     display: flex;
     overflow: auto;
+
+
     
 }
 
@@ -80,7 +96,14 @@ margin-top: 5rem;
     width: 5rem;
     height: auto;
     padding: 0.1rem;
+    cursor:pointer;
+transition: 0.3s;
+}
 
+
+.movie__poster:hover {
+    filter:grayscale(100%);
+    transform: scale(0.9);
 }
 
 
@@ -107,6 +130,78 @@ margin-top: 5rem;
 .video__container{
     flex: 50%;
     padding: 1rem;
+
+}
+
+@media screen and (max-width: 768px){
+    
+
+    .poster__background{
+    width: 100%;
+    height: 70rem;
+    object-fit: cover;
+    object-position: center;
+    position: relative;
+
+}
+
+.contents__container{
+    display: 100%;
+    height: 70rem;
+
+}
+
+    .contents__subcontainer{
+    width: 100%;
+    height: auto;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+
+
+.casts__wrap{
+    width: 40rem;
+    height: auto;
+    overflow: auto;
+    display: flex;
+}
+
+.cast__info{
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+
+}
+
+.profile__pic{
+    width: 5rem;
+    height: 5rem;
+    padding: 0.3rem;
+
+
+}
+
+.cast__name{
+    position: absolute;
+    width: 100%;
+    top:0;
+    left: 0;
+
+
+
+}
+
+.video__container{
+width: 100%;
+
+}
 
 }
 
