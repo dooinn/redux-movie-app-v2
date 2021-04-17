@@ -4,6 +4,8 @@ import Home from './Screens/Home';
 import Header from './Components/Header';
 import Detail from './Screens/Detail';
 import Favorite from './Screens/Favorite';
+import Person from './Screens/Person';
+
 
 const App = () => {
   return (
@@ -14,6 +16,8 @@ const App = () => {
           <Route path="/" exact component={Home} />
           <Route path="/movie/:id" component={Detail} />
           <Route path="/favorite" component={Favorite} />
+          <Route path="/person/:id" component={Person} />
+
         </Switch>
       </BrowserRouter>
 

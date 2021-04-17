@@ -55,14 +55,23 @@ margin-top: 5rem;
 
 .casts__container{
     flex: 10%;
-    padding: 1rem;
+
 }
 
 .casts__wrap{
     width: 100%;
     height: 30rem;
     overflow: auto;
+    text-align: center;
+    justify-content: center;
 }
+
+.cast__info{
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+
 
 .profile__pic{
     width: 7rem;
@@ -75,6 +84,7 @@ margin-top: 5rem;
 .description__container{
     flex: 40%;
     padding: 1rem;
+
 
 }
 
@@ -154,7 +164,6 @@ transition: 0.3s;
     .contents__subcontainer{
     width: 100%;
     height: auto;
-    padding: 2rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -169,40 +178,38 @@ transition: 0.3s;
     height: auto;
     overflow: auto;
     display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .cast__info{
-    position: relative;
+
     width: 100%;
     display: flex;
     justify-content: center;
+    flex-direction: column;
+
+ 
+   
 
 
 }
 
 .profile__pic{
-    width: 5rem;
+    width: 5em;
     height: 5rem;
     padding: 0.3rem;
 
 
 }
 
-.cast__name{
-    position: absolute;
-    width: 100%;
-    top:0;
-    left: 0;
 
-
-
-}
 
 .video__container{
 width: 100%;
 
 }
 
-}
 
+}
 `;

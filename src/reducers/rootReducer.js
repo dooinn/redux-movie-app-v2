@@ -12,6 +12,11 @@ import {
     FavoriteMovieReducer
 } from './movieReducer'
 
+import {
+    PersonDetailReducer,
+    PersonCreditsReducer,
+} from './personReducer'
+
 const RootReducer = combineReducers({
     NowPlayingMovie: NowPlayingMovieReducer,
     SearchMovie: SearchMovieReducer,
@@ -22,7 +27,9 @@ const RootReducer = combineReducers({
     MovieVideo: MovieVideoReducer,
     MovieCasts: MovieCastsReducer,
     SimilarMovie: SimilarMovieReducer,
-    FavoriteMovie: FavoriteMovieReducer
+    FavoriteMovie: FavoriteMovieReducer,
+    PersonDetail: PersonDetailReducer,
+    PersonCredits: PersonCreditsReducer
 
 });
 
