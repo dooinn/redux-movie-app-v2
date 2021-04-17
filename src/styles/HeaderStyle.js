@@ -21,7 +21,7 @@ height: 100%;
 top: 0;
 left: -100%;
 z-index: 999;
-background-image: url('https://images.unsplash.com/photo-1478479405421-ce83c92fb3ba?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80');
+background-image: url('https://images.unsplash.com/photo-1478760329108-5c3ed9d495a0?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2767&q=80');
 background-repeat: no-repeat;
 background-size: cover;
 background-position: center;

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom'
 import { GetSearchMovie } from '../actions/movieActions'
+import { GetPeopleSearch } from '../actions/personActions'
 import { Section, SearchResultContainer, NavBar } from '../styles/HeaderStyle'
 import { GiPopcorn } from 'react-icons/gi'
 import { BiSearch } from 'react-icons/bi'
@@ -9,23 +10,35 @@ import { AiOutlineClose } from 'react-icons/ai'
 import { LoadingBox } from './LoadingBox';
 
 const Header = () => {
+
     const dispatch = useDispatch();
     const [modalOpen, setModalOpen] = useState(false);
-    const [query, setQuery] = useState("");
-    const [newSearch, setNewSearch] = useState([]);
+    const [searchSwitch, setSearchSwitch] = useState(false);
+    const [movieQuery, setMovieQuery] = useState("");
+    const [personQuery, setPersonQuery] = useState("");
+    const [newMovieSearch, setNewMovieSearch] = useState([]);
+    const [newPersonSearch, setNewPersonSearch] = useState([]);
+    const movieSearchResults = useSelector(state => state.SearchMovie);
+    const personSearchResults = useSelector(state => state.SearchPerson);
     const showModal = () => setModalOpen(!modalOpen);
-    const searchResults = useSelector(state => state.SearchMovie);
-    const { loading, error, movies } = searchResults;
+    const showSearch = () => setSearchSwitch(!searchSwitch);
+    // const { loading, error, movies } = movieSearchResults;
 
-    const onChangeHandler = async (e) => {
+    const onChangeMovieHandler = async (e) => {
         e.preventDefault();
-        setQuery(e.target.value)
-        setNewSearch(await dispatch(GetSearchMovie(e.target.value)))
+        setMovieQuery(e.target.value)
+        setNewMovieSearch(await dispatch(GetSearchMovie(e.target.value)))
+    }
 
+    const onChangePersonHandler = async (e) => {
+        e.preventDefault();
+        setPersonQuery(e.target.value)
+        setNewPersonSearch(await dispatch(GetPeopleSearch(e.target.value)))
     }
 
     useEffect(() => {
         dispatch(GetSearchMovie())
+        dispatch(GetPeopleSearch())
     }, [])
 
 
@@ -35,33 +48,82 @@ const Header = () => {
         <Section>
             <div className={modalOpen ? "modal active" : "modal"}  >
                 <AiOutlineClose className="close__btn" onClick={() => showModal()} />
-                <h1 style={{ fontSize: "3rem", color: "white", marginBottom: "2rem" }}>Searh Any Movies!</h1>
-                <input
-                    className="search__input"
-                    placeholder="Type a movie title!"
-                    value={query}
-                    onChange={onChangeHandler}
-                ></input>
-                {loading ? (
-                    <LoadingBox></LoadingBox>
-                ) : error ? (
-                    <p></p>
-                ) : (
-                    <>
-                        {query && (
-                            <SearchResultContainer>
-                                {movies.map((movie) => (
-                                    <Link key={movie.id} to={`/movie/${movie.id}`} onClick={() => showModal()}>
-                                        {movie.poster_path ?
-                                            <img className="movie__poster" src={posterUrl + movie.poster_path} alt={movie.title}></img>
-                                            : <p className="movie__poster">{movie.title}</p>
-                                        }
-                                    </Link>
-                                ))}
-                            </SearchResultContainer>
-                        )}
-                    </>
-                )}
+                {
+                    searchSwitch ?
+                        <h1 style={{ fontSize: "3rem", color: "white", marginBottom: "2rem" }}>Search Any Movies</h1>
+                        :
+                        <h1 style={{ fontSize: "3rem", color: "white", marginBottom: "2rem" }}>Search Any Movie Stars</h1>
+
+
+
+                }
+
+
+                <button onClick={() => showSearch()}>
+                    {searchSwitch ? <p>Search People</p> : <p>Search Movie</p>}
+                </button>
+                {searchSwitch ?
+                    <input
+                        className="search__input"
+                        placeholder="Type a movie title!"
+                        value={movieQuery}
+                        onChange={onChangeMovieHandler}
+                    /> :
+                    <input
+                        className="search__input"
+                        placeholder="Type a person name"
+                        value={personQuery}
+                        onChange={onChangePersonHandler}
+                    />
+                }
+                {
+                    searchSwitch ?
+                        <>
+                            {movieSearchResults.loading ? (
+                                <LoadingBox></LoadingBox>
+                            ) : movieSearchResults.error ? (
+                                <p>Error!</p>
+                            ) : (
+                                <>
+                                    {movieQuery && (
+                                        <SearchResultContainer>
+                                            {movieSearchResults.movies.map((movie) => (
+                                                <Link key={movie.id} to={`/movie/${movie.id}`} onClick={() => showModal()}>
+                                                    {movie.poster_path ?
+                                                        <img className="movie__poster" src={posterUrl + movie.poster_path} alt={movie.title}></img>
+                                                        : <p className="movie__poster">{movie.title}</p>
+                                                    }
+                                                </Link>
+                                            ))}
+                                        </SearchResultContainer>
+                                    )}
+                                </>
+                            )}
+                        </>
+                        :
+                        <>
+                            {personSearchResults.loading ? (
+                                <LoadingBox></LoadingBox>
+                            ) : personSearchResults.error ? (
+                                <p>Error!</p>
+                            ) : (
+                                <>
+                                    {personQuery && (
+                                        <SearchResultContainer>
+                                            {personSearchResults.data.map((person) => (
+                                                <Link key={person.id} to={`/person/${person.id}`} onClick={() => showModal()}>
+                                                    {person.profile_path ?
+                                                        <img className="movie__poster" src={posterUrl + person.profile_path} alt={person.name}></img>
+                                                        : <p className="movie__poster">{person.name}</p>
+                                                    }
+                                                </Link>
+                                            ))}
+                                        </SearchResultContainer>
+                                    )}
+                                </>
+                            )}
+                        </>
+                }
             </div>
             <NavBar>
                 <div className="logo__container">

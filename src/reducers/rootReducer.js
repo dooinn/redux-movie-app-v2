@@ -9,12 +9,14 @@ import {
     MovieVideoReducer,
     MovieCastsReducer,
     SimilarMovieReducer,
-    FavoriteMovieReducer
+    FavoriteMovieReducer,
+
 } from './movieReducer'
 
 import {
     PersonDetailReducer,
     PersonCreditsReducer,
+    SearchPersonReducer
 } from './personReducer'
 
 const RootReducer = combineReducers({
@@ -29,7 +31,10 @@ const RootReducer = combineReducers({
     SimilarMovie: SimilarMovieReducer,
     FavoriteMovie: FavoriteMovieReducer,
     PersonDetail: PersonDetailReducer,
-    PersonCredits: PersonCreditsReducer
+    PersonCredits: PersonCreditsReducer,
+    SearchPerson: SearchPersonReducer
+
+
 
 });
 

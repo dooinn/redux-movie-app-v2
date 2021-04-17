@@ -73,8 +73,8 @@ const Detail = ({ match }) => {
                                                             </Link>
                                                         }
                                                         <div className="cast__name">
-                                                            <h5>{cast.character}</h5>
-                                                            <h6>({cast.original_name})</h6>
+                                                            <h5>{cast.original_name}</h5>
+                                                            <h6>({cast.character})</h6>
                                                         </div>
 
 

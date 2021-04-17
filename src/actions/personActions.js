@@ -17,6 +17,16 @@ import {
 const API_KEY = '74af3496125e04547854e2abd22ebe6f';
 const BASE_URL = 'https://api.themoviedb.org/3';
 
+export const GetPeopleSearch = (keyword) => async dispatch => {
+    try {
+        dispatch({ type: PERSON_SEARCH_REQUEST });
+        const res = await Axios.get(`${BASE_URL}/search/person?api_key=${API_KEY}&language=en-US&page=1&query=${keyword}`)
+        dispatch({ type: PERSON_SEARCH_SUCCESS, payload: res.data })
+    } catch (e) {
+        dispatch({ type: PERSON_SEARCH_FAIL })
+    }
+}
+
 export const GetPersonDetail = (id) => async dispatch => {
     try {
         dispatch({ type: PERSON_DETAIL_REQUEST });
