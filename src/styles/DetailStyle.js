@@ -61,10 +61,16 @@ margin-top: 5rem;
 .casts__wrap{
     width: 100%;
     height: 30rem;
-    overflow: auto;
+    overflow-x: hidden;
+    overflow-y: auto;
     text-align: center;
     justify-content: center;
 }
+
+.cast-wrap::-webkit-scrollbar{
+    display: none;
+}
+  
 
 .cast__info{
     margin-bottom: 1rem;
@@ -103,7 +109,7 @@ margin-top: 5rem;
 }
 
 .movie__poster {
-    width: 5rem;
+    max-width: 10rem;
     height: auto;
     padding: 0.1rem;
     cursor:pointer;
@@ -176,11 +182,19 @@ transition: 0.3s;
 .casts__wrap{
     width: 40rem;
     height: auto;
-    overflow: auto;
+    overflow-x:scroll;
+    overflow-y: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
+.cast-wrap::-webkit-scrollbar{
+display: hidden;
+}
+
+
+
 
 .cast__info{
 
@@ -208,6 +222,10 @@ transition: 0.3s;
 .video__container{
 width: 100%;
 
+}
+
+.movie__poster{
+    width: 7rem;
 }
 
 

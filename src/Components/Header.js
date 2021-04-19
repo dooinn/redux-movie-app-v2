@@ -54,12 +54,8 @@ const Header = () => {
                         :
                         <h1 style={{ fontSize: "3rem", color: "white", marginBottom: "2rem" }}>Search Any Movie Stars</h1>
 
-
-
                 }
-
-
-                <button onClick={() => showSearch()}>
+                <button className="searchSwitch__btn" onClick={() => showSearch()}>
                     {searchSwitch ? <p>Search People</p> : <p>Search Movie</p>}
                 </button>
                 {searchSwitch ?
@@ -127,9 +123,9 @@ const Header = () => {
             </div>
             <NavBar>
                 <div className="logo__container">
-                    <GiPopcorn style={{ color: "white", fontSize: "2rem", marginRight: "0.5rem" }} />
+                    <GiPopcorn lassName="logo__assets" style={{ color: "white", fontSize: "2rem", marginRight: "0.5rem" }} />
                     <Link to="/">
-                        <h1 style={{ fontSize: "1.5rem" }}>About Movie</h1>
+                        <h1 className="logo__assets" style={{ fontSize: "1.5rem" }}>About Movie</h1>
                     </Link>
                 </div>
                 <div className="search__container">
@@ -141,6 +137,9 @@ const Header = () => {
                     </div>
                 </div>
                 <div className="category__container">
+                    <div className="search__icon__sm" onClick={() => showModal()}>
+                        <BiSearch style={{ fontSize: "1.5rem" }} />
+                    </div>
                     <Link to="/favorites">My Favorites</Link>
                 </div>
             </NavBar>
