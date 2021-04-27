@@ -45,7 +45,7 @@ export const PersonCreditsReducer = (state = { lading: false, data: [], error: "
         case PERSON_CREDITS_REQUEST:
             return { ...state, loading: true, error: "" };
         case PERSON_CREDITS_SUCCESS:
-            return { ...state, loading: false, data: action.payload.results, error: "" };
+            return { ...state, loading: false, data: action.payload, error: "" };
         case PERSON_CREDITS_FAIL:
             return { ...state, loading: false, error: "Unable to fetch Data" }
         default:

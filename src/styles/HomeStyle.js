@@ -7,6 +7,16 @@ height:auto;
 margin-top: 5rem;
 position: relative;
 
+.seeAll-link{
+    color: white;
+    text-decoration: none;
+    margin-left: 1rem;
+}
+
+.seeAll-link:hover{
+    text-decoration: underline;
+}
+
 .movieCategory__container{
     width: 100%;
     padding: 1rem;
@@ -14,6 +24,11 @@ position: relative;
     z-index: 90;
     box-shadow: -15px 124px 61px 200px rgba(0,0,0,1);
     border: none;
+}
+
+.category_header{
+    display: flex;
+  align-items: center;
 }
 .movie__container{
     width: 100%;
@@ -30,7 +45,23 @@ position: relative;
 .movie__wrap{
     width: 100%;
     padding: 0.3rem;
+    position: relative;
 
+}
+
+.poster__overlay{
+    background: rgba(0,0,0,.7);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    opacity: 0;
+    padding: 1rem;
+    color: white;
+    align-items: center;
+}
+
+.poster__overlay:hover{
+    opacity: 1;
 }
 
 .movie__poster{
@@ -47,7 +78,7 @@ transition: 0.3s;
 
 .carousel__container{
     width: 100%;
-    height: auto;
+    height: 75vh;
 
 }
 
@@ -60,7 +91,7 @@ transition: 0.3s;
 
 .slider__background{
     width: 100%;
-    height: 50vh;
+    height: 100%;
     object-fit: cover;
     object-position: top;
 
@@ -88,15 +119,20 @@ transition: 0.3s;
 }
 
 .detail__btn{
-    background: #ad8c34;
+    background: #C02425;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #F0CB35, #C02425);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #F0CB35, #C02425); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     padding: 1rem 2rem;
     color: white;
+    transition: .3s;
 
-    
 }
 
 .detail__btn:hover{
-    text-decoration:underline;
+    background: #C02425;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to left, #F0CB35, #C02425);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to left, #F0CB35, #C02425); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+transform: scale(1.2);
 }
 
 .sliderBtn__container{
@@ -128,7 +164,8 @@ transition: 0.3s;
 @media screen and (max-width: 768px){
     .description__box{
     width: 27rem;
-    padding: 7rem 0rem 0rem 4rem;
+    padding:1rem;
+    margin-top: 5rem;
 }
 
 .description__box h1{

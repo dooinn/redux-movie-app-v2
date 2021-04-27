@@ -42,8 +42,8 @@ export const GetPersonCredits = (personId) => async dispatch => {
     try {
         dispatch({ type: PERSON_CREDITS_REQUEST });
         const res = await Axios.get(`${BASE_URL}/person/${personId}/movie_credits?api_key=${API_KEY}&language=en-US`)
-        dispatch({ type: PERSON_CREDITS_SUCCESS, payload: res.data })
-        console.log("personCredits", res.data)
+        dispatch({ type: PERSON_CREDITS_SUCCESS, payload: res.data.cast })
+        console.log("personCredits", res.data.cast)
     } catch (e) {
         dispatch({ type: PERSON_CREDITS_FAIL })
     }

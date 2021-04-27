@@ -18,21 +18,18 @@ a{
 
 .modal {
 width: 100%;
-height: 100%;
-top: 0;
-left: -100%;
-z-index: 999;
-background-image: url('https://images.unsplash.com/photo-1478760329108-5c3ed9d495a0?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2767&q=80');
-background-repeat: no-repeat;
-background-size: cover;
-background-position: center;
+height: 100vh;
+top: -100%;
+left: 0;
+z-index: 9999;
 position: fixed;
 display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
 transition: 350ms;
-opacity: 0.9;
+background: rgba(0,0,0,0.9)
+
 
 }
 
@@ -43,6 +40,8 @@ transition: 350ms;
 z-index: 900;
 
 }
+
+
 
 .close__btn{
 color:white;
@@ -70,6 +69,21 @@ transform: scale(1.2);
     cursor: pointer;
 }
 
+.switch__btn {
+    font-size: 3rem;
+    color: gray;
+}
+
+.switch__btn:hover{
+    color: white;
+}
+
+.search__title{
+    font-size: 6rem;
+    color: white;
+    margin-bottom: 2rem;
+}
+
 
 .search__input {
     width: 40rem;
@@ -81,11 +95,26 @@ transform: scale(1.2);
 }
 
 @media screen and (max-width: 768px){
+
+    .modal{
+        padding: 1rem;
+    }
     .search__input{
         width: 100%;
-       
+
+    
+    }
+
+    .search__title{
+        font-size: 4rem;
         
     }
+
+    .searchSwitch__btn{
+        font-size: 2rem;
+
+    }
+
 }
 
 
@@ -117,11 +146,6 @@ overflow-x: scroll;
 
 
 `;
-
-
-
-
-
 
 export const NavBar = styled.nav`
 width: 100%;
@@ -191,14 +215,26 @@ align-items:center;
     display: none;
 }
 
-.category__container:hover{
-    text-decoration: underline;
-}
+
 
 .category__container a{
-    background:#ad8c34;
-    padding: 1rem 2rem;
-    color: white;
+background: #C02425;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #F0CB35, #C02425);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #F0CB35, #C02425); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+padding: 1rem 2rem;
+color: white;
+
+ 
+  
+}
+
+.category__container a:hover{
+background: #C02425;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to left, #F0CB35, #C02425);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to left, #F0CB35, #C02425); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+padding: 1rem 2rem;
+color: white;
+
  
   
 }
@@ -217,7 +253,7 @@ align-items:center;
 
 .category__container a{
 
-    padding: 0.7rem 1rem;
+    padding:0.2rem 1rem;
 
   
 }

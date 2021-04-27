@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 
 export const Section = styled.div`
@@ -18,13 +18,26 @@ margin-top: 5rem;
 }
 
 .save__btn{
-    float: right;
-
+   position: absolute;
+   top: 5%;
+   left: 90%;
+    z-index: 990;
     outline: none;
     border: none;
     background: transparent;
-  
+    transition: .3s;
+    cursor: pointer;
+}
 
+.save__text{
+    color: white;
+   
+}
+
+
+.save__btn:hover{
+    transform: scale(0.9);
+    
 
 }
 
@@ -154,7 +167,7 @@ transition: 0.3s;
 
     .poster__background{
     width: 100%;
-    height: 70rem;
+    height: 40rem;
     object-fit: cover;
     object-position: center;
     position: relative;
@@ -163,7 +176,7 @@ transition: 0.3s;
 
 .contents__container{
     display: 100%;
-    height: 70rem;
+    height: 40rem;
 
 }
 
@@ -213,9 +226,10 @@ display: hidden;
     width: 5em;
     height: 5rem;
     padding: 0.3rem;
-
-
+    transition: .3s;
+    cursor: pointer;
 }
+
 
 
 
@@ -230,4 +244,68 @@ width: 100%;
 
 
 }
+`;
+const transform = css`
+    transform: translate(-50%, -50%);
+`;
+
+export const Modal = styled.div`
+    position: fixed;
+    left: 0; 
+    right: 0; 
+    top: 0; 
+    bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: ${props => props.active ? 100 : -1};
+ 
+    figure {
+        position: fixed;
+        left: 0; right: 0; top: 0; bottom: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: 999;
+        background: rgba(0, 0, 0, .7);
+    }
+
+    article {
+        display: flex;
+        position: fixed;
+        border-radius: 25px;
+        min-width: 400px;
+        max-width: 700px;
+        min-height: auto;
+        max-height: 500px;
+        transition: left .4s;
+        left: 50%; 
+        top: ${props => props.active ? 50 : 100}%;
+        top: 50%;
+        left: ${props => props.active ? 50 : -200}%;
+        background: white;
+        box-shadow: 0 0 15px rgba(0, 0, 0, .5);
+        z-index: 999;
+        ${props => props.active && transform};
+        color: black;
+        padding: 1rem;
+        background: black;
+        color: white;
+
+    }
+
+    .column-left-column{
+        padding: 1rem;
+    }
+
+    .column-right-column{
+        padding: 1rem;
+        overflow: auto;
+    }
+
+    @media screen and (max-width: 768px){
+        article{
+            flex-direction: column;
+            justify-content: center;
+        }
+
+    }
 `;

@@ -12,6 +12,9 @@ import {
     MOVIE_TOPRATED_REQUEST,
     MOVIE_TOPRATED_SUCCESS,
     MOVIE_TOPRATED_FAIL,
+    MOVIE_UPCOMING_REQUEST,
+    MOVIE_UPCOMING_SUCCESS,
+    MOVIE_UPCOMING_FAIL,
     MOVIE_LATEST_REQUEST,
     MOVIE_LATEST_SUCCESS,
     MOVIE_LATEST_FAIL,
@@ -28,7 +31,7 @@ import {
     MOVIE_SIMILAR_SUCCESS,
     MOVIE_SIMILAR_FAIL,
     ADD_MOVIE_TO_FAVORITE,
-    REMOVE_MOVIE_FROM_FAVORITE
+
 
 } from '../constants/movieConstants'
 
@@ -78,6 +81,19 @@ export const TopRatedMovieReducer = (state = { loading: false, data: [], error: 
         case MOVIE_TOPRATED_SUCCESS:
             return { ...state, loading: false, data: action.payload.results, error: "" };
         case MOVIE_TOPRATED_FAIL:
+            return { ...state, loading: false, error: "Unable to fetch data" };
+        default:
+            return state
+    }
+};
+
+export const UpcomingMovieReducer = (state = { loading: false, data: [], error: "" }, action) => {
+    switch (action.type) {
+        case MOVIE_UPCOMING_REQUEST:
+            return { ...state, loading: true, error: "" };
+        case MOVIE_UPCOMING_SUCCESS:
+            return { ...state, loading: false, data: action.payload.results, error: "" };
+        case MOVIE_UPCOMING_FAIL:
             return { ...state, loading: false, error: "Unable to fetch data" };
         default:
             return state
@@ -152,30 +168,21 @@ export const SimilarMovieReducer = (state = { loading: false, data: [], error: "
 
 
 
-export const FavoriteMovieReducer = (state = {
-    watchlist: localStorage.getItem("watchlist")
-        ? JSON.parse(localStorage.getItem("watchlist"))
-        : [],
-}, action) => {
+export const FavoriteMovieReducer = (state = [], action) => {
     switch (action.type) {
-        case ADD_MOVIE_TO_FAVORITE:
-            return {
-                ...state,
-                watchlist: [action.payload, ...state.watchlist],
-            };
-        case REMOVE_MOVIE_FROM_FAVORITE:
-            return {
-                ...state,
-                watchlist: state.watchlist.filter(
-                    (movie) => movie.id !== action.payload
-                ),
-            };
 
-        default:
+        case ADD_MOVIE_TO_FAVORITE: {
+            const flag = state.some(item => item.id === action.item.id);
+            console.log(flag)
+            return !flag ? state.concat(action.item) : state.filter(item => item.id !== action.item.id);
+        }
+        default: {
+
             return state;
-    }
-}
 
+        }
+    }
+};
 
 
 

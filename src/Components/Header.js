@@ -20,6 +20,7 @@ const Header = () => {
     const [newPersonSearch, setNewPersonSearch] = useState([]);
     const movieSearchResults = useSelector(state => state.SearchMovie);
     const personSearchResults = useSelector(state => state.SearchPerson);
+    const favorites = useSelector(state => state.Favorite);
     const showModal = () => setModalOpen(!modalOpen);
     const showSearch = () => setSearchSwitch(!searchSwitch);
     // const { loading, error, movies } = movieSearchResults;
@@ -46,57 +47,35 @@ const Header = () => {
 
     return (
         <Section>
-            <div className={modalOpen ? "modal active" : "modal"}  >
+            <div className={modalOpen ? "modal active" : "modal"} >
                 <AiOutlineClose className="close__btn" onClick={() => showModal()} />
                 {
                     searchSwitch ?
-                        <h1 style={{ fontSize: "3rem", color: "white", marginBottom: "2rem" }}>Search Any Movies</h1>
+                        <h1 className="search__title">Search Any Movie Stars</h1>
                         :
-                        <h1 style={{ fontSize: "3rem", color: "white", marginBottom: "2rem" }}>Search Any Movie Stars</h1>
+                        <h1 className="search__title" >Search Any Movies</h1>
 
                 }
                 <button className="searchSwitch__btn" onClick={() => showSearch()}>
-                    {searchSwitch ? <p>Search People</p> : <p>Search Movie</p>}
+                    {searchSwitch ? <p className="switch__btn">Search Movie</p> : <p className="switch__btn">Search People</p>}
                 </button>
                 {searchSwitch ?
-                    <input
-                        className="search__input"
-                        placeholder="Type a movie title!"
-                        value={movieQuery}
-                        onChange={onChangeMovieHandler}
-                    /> :
                     <input
                         className="search__input"
                         placeholder="Type a person name"
                         value={personQuery}
                         onChange={onChangePersonHandler}
+                    /> :
+                    <input
+                        className="search__input"
+                        placeholder="Type a movie title!"
+                        value={movieQuery}
+                        onChange={onChangeMovieHandler}
                     />
+
                 }
                 {
                     searchSwitch ?
-                        <>
-                            {movieSearchResults.loading ? (
-                                <LoadingBox></LoadingBox>
-                            ) : movieSearchResults.error ? (
-                                <p>Error!</p>
-                            ) : (
-                                <>
-                                    {movieQuery && (
-                                        <SearchResultContainer>
-                                            {movieSearchResults.movies.map((movie) => (
-                                                <Link key={movie.id} to={`/movie/${movie.id}`} onClick={() => showModal()}>
-                                                    {movie.poster_path ?
-                                                        <img className="movie__poster" src={posterUrl + movie.poster_path} alt={movie.title}></img>
-                                                        : <p className="movie__poster">{movie.title}</p>
-                                                    }
-                                                </Link>
-                                            ))}
-                                        </SearchResultContainer>
-                                    )}
-                                </>
-                            )}
-                        </>
-                        :
                         <>
                             {personSearchResults.loading ? (
                                 <LoadingBox></LoadingBox>
@@ -118,12 +97,37 @@ const Header = () => {
                                     )}
                                 </>
                             )}
+                        </> :
+                        <>
+
+                            {movieSearchResults.loading ? (
+                                <LoadingBox></LoadingBox>
+                            ) : movieSearchResults.error ? (
+                                <p>Error!</p>
+                            ) : (
+                                <>
+                                    {movieQuery && (
+                                        <SearchResultContainer>
+                                            {movieSearchResults.movies.map((movie) => (
+                                                <Link key={movie.id} to={`/movie/${movie.id}`} onClick={() => showModal()}>
+                                                    {movie.poster_path ?
+                                                        <img className="movie__poster" src={posterUrl + movie.poster_path} alt={movie.title}></img>
+                                                        : <p className="movie__poster">{movie.title}</p>
+                                                    }
+                                                </Link>
+                                            ))}
+                                        </SearchResultContainer>
+                                    )}
+                                </>
+                            )}
                         </>
+
+
                 }
             </div>
             <NavBar>
                 <div className="logo__container">
-                    <GiPopcorn lassName="logo__assets" style={{ color: "white", fontSize: "2rem", marginRight: "0.5rem" }} />
+                    <GiPopcorn className="logo__assets" style={{ color: "white", fontSize: "2rem", marginRight: "0.5rem" }} />
                     <Link to="/">
                         <h1 className="logo__assets" style={{ fontSize: "1.5rem" }}>About Movie</h1>
                     </Link>
@@ -140,7 +144,7 @@ const Header = () => {
                     <div className="search__icon__sm" onClick={() => showModal()}>
                         <BiSearch style={{ fontSize: "1.5rem" }} />
                     </div>
-                    <Link to="/favorites">My Favorites</Link>
+                    <Link to="/favorites">My Favorites({favorites.length})</Link>
                 </div>
             </NavBar>
         </Section>

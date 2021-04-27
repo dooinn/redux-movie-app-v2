@@ -4,13 +4,15 @@ export const Section = styled.div`
 width: 100vw;
 height: 100vh;
 margin-top: 5rem;
+position: relative;
 
 .poster__background{
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: center;
-    position: relative;
+
+
 
 
 }
@@ -18,7 +20,6 @@ margin-top: 5rem;
 .contents__container{
     width: 100%;
     height: 100%;
-    margin-top: 5rem;
     position: absolute;
     justify-content: center;
     align-items: center;
@@ -36,6 +37,7 @@ margin-top: 5rem;
     padding: 2rem;
     display: flex;
     color: white;
+    margin-top: 5rem;
 }
 
 .name__container{
@@ -45,18 +47,28 @@ margin-top: 5rem;
 
 
 .description__container{
-    width: 20rem;
-    height: 10rem;
-    position: absolute;
-    bottom: 40%;
-    right:7%;
-
-
+    width: 100%;
+    height: 20rem;;
+    
 }
+
+
 .biography__container{
     width: 100%;
     height: 100%;
     overflow: auto;
+}
+
+.movieCredits__container{
+width: 70vw;
+display: flex;
+overflow: auto;
+}
+
+.movie__poster{
+    width: 15rem;
+    height: auto;
+    padding: 0.5rem;
 }
 
 

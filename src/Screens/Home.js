@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { GetNowPlayingMovie, GetPopularMovie, GetTopRatedMovie, GetLatestMovie } from '../actions/movieActions'
+import { GetNowPlayingMovie, GetPopularMovie, GetTopRatedMovie, GetUpcomingMovie, GetLatestMovie } from '../actions/movieActions'
 import { Section } from '../styles/HomeStyle'
 import { RiArrowLeftSLine, RiArrowRightSLine } from 'react-icons/ri';
 
@@ -10,12 +10,12 @@ import { Link } from 'react-router-dom';
 const Home = () => {
 
     const posterUrl = 'https://image.tmdb.org/t/p/original/';
-
-
     const dispatch = useDispatch();
     const popularMovie = useSelector(state => state.PopularMovie);
     const topRatedMovie = useSelector(state => state.TopRatedMovie);
+    const latest = useSelector(state => state.LatestMovie);
     const nowPlaying = useSelector(state => state.NowPlayingMovie);
+    const upComing = useSelector(state => state.UpComingMovie);
     const [currentImageIdx, setCurrentImageIdx] = useState(0)
 
     useEffect(() => {
@@ -23,11 +23,11 @@ const Home = () => {
             dispatch(GetPopularMovie())
             dispatch(GetTopRatedMovie())
             dispatch(GetNowPlayingMovie())
+            dispatch(GetUpcomingMovie())
+            dispatch(GetLatestMovie())
         }
         fetchAPI();
     }, [])
-
-
 
     const prevSlide = () => {
         const resetToVeryBack = currentImageIdx === 0;
@@ -50,6 +50,7 @@ const Home = () => {
     //     const handleAutoplay = setInterval(nextSlide, 5000);
     //     return () => clearInterval(handleAutoplay);
     // }, [nextSlide]);
+
 
 
     return (
@@ -76,33 +77,74 @@ const Home = () => {
                 </div>
             </div>
             <div className="movieCategory__container">
-                <h1 className="category__text">Popular</h1>
+                <div className="category_header">
+                    <h1 className="category__text">Popular</h1>
+                    <Link className="seeAll-link" to="/popular-list">See all</Link>
+                </div>
                 <div className="movie__container">
                     {popularMovie.data.map(movie => {
                         return (
                             <div className="movie__wrap" key={movie.id}>
                                 <Link to={"/movie/" + movie.id}>
-                                    <img className="movie__poster" src={posterUrl + movie.poster_path} />
+                                    <div className="poster__overlay">
+                                        <p>{movie.title}</p>
+                                        <p>({movie.release_date.slice(0, 4)})</p>
+                                        <p>Rate: {movie.vote_average}/10</p>
+                                    </div>
                                 </Link>
+
+                                <img className="movie__poster" src={posterUrl + movie.poster_path} />
 
                             </div>
                         )
                     })}
                 </div>
-                <h1 className="category__text">Top Rated</h1>
+
+                <div className="category_header">
+                    <h1 className="category__text">Top Rated</h1>
+                    <Link className="seeAll-link" to="/toprated-list">See all</Link>
+                </div>
                 <div className="movie__container">
                     {topRatedMovie.data.map(movie => {
                         return (
                             <div className="movie__wrap" key={movie.id}>
                                 <Link to={"/movie/" + movie.id}>
-                                    <img className="movie__poster" src={posterUrl + movie.backdrop_path} />
+                                    <div className="poster__overlay">
+                                        <p>{movie.title}</p>
+                                        <p>({movie.release_date.slice(0, 4)})</p>
+                                        <p>Rate: {movie.vote_average}/10</p>
+                                    </div>
                                 </Link>
+
+                                <img className="movie__poster" src={posterUrl + movie.backdrop_path} />
+
                             </div>
-
-
                         )
                     })}
                 </div>
+                <div className="category_header">
+                    <h1 className="category__text">Upcoming</h1>
+                    <Link className="seeAll-link" to="/upcoming-list">See all</Link>
+                </div>
+                <div className="movie__container">
+                    {upComing.data.map(movie => {
+                        return (
+                            <div className="movie__wrap" key={movie.id}>
+                                <Link to={"/movie/" + movie.id}>
+                                    <div className="poster__overlay">
+                                        <p>{movie.title}</p>
+                                        <p>({movie.release_date.slice(0, 4)})</p>
+                                        <p>Rate: {movie.vote_average}/10</p>
+                                    </div>
+                                </Link>
+
+                                <img className="movie__poster" src={posterUrl + movie.backdrop_path} />
+                            </div>
+                        )
+                    })}
+                </div>
+
+
             </div>
 
         </Section>

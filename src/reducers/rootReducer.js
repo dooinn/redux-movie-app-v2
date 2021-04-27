@@ -4,12 +4,14 @@ import {
     SearchMovieReducer,
     PopularMovieReducer,
     TopRatedMovieReducer,
+    UpcomingMovieReducer,
     LatestMovieReducer,
     DetailMovieReducer,
     MovieVideoReducer,
     MovieCastsReducer,
     SimilarMovieReducer,
     FavoriteMovieReducer,
+
 
 } from './movieReducer'
 
@@ -24,12 +26,13 @@ const RootReducer = combineReducers({
     SearchMovie: SearchMovieReducer,
     PopularMovie: PopularMovieReducer,
     TopRatedMovie: TopRatedMovieReducer,
+    UpComingMovie: UpcomingMovieReducer,
     LatestMovie: LatestMovieReducer,
     DetailMovie: DetailMovieReducer,
     MovieVideo: MovieVideoReducer,
     MovieCasts: MovieCastsReducer,
     SimilarMovie: SimilarMovieReducer,
-    FavoriteMovie: FavoriteMovieReducer,
+    Favorite: FavoriteMovieReducer,
     PersonDetail: PersonDetailReducer,
     PersonCredits: PersonCreditsReducer,
     SearchPerson: SearchPersonReducer
