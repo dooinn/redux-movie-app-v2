@@ -16,9 +16,3 @@ export const GetActor = async (id) => {
 	return await getRequest(url);
 };
 
-
-export const GetPopularAll = async (page) => {
-	url = `${BASE_URL}/movie/popular?api_key=${API_KEY}&language=en-US&page=${page}`;
-	return await getRequest(url)
-}
-
