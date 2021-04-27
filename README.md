@@ -6,12 +6,12 @@ Simple movie search web app created with React & Redux.
 
 
 ## Table of Contents
-*[General info](#general-info)
-*[Technologies](#technologies)
-*[Setup](#setup)
-*[Features](#features)
-*[Inspiration](#inspiration)
-*[Contact](#contact)
+* [General info](#general-info)
+* [Technologies](#technologies)
+* [Setup](#setup)
+* [Features](#features)
+* [Inspiration](#inspiration)
+* [Contact](#contact)
 
 ## General info
 
@@ -48,7 +48,7 @@ This app is inspired by online movie streaming platforms such as Netflix, Amazon
 
 ## Contact
 Email: kimdooinn1@gmail.com
-[linkedin] (https://www.linkedin.com/in/dooinnkim/)
+[linkedin](https://www.linkedin.com/in/dooinnkim/)
 
 
 
