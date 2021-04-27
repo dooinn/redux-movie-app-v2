@@ -6,12 +6,12 @@ Simple movie search web app created with React & Redux.
 
 
 ## Table of Contents
-* [General info](#general-info)
-* [Technologies](#technologies)
-* [Setup](#setup)
-* [Features](#features)
-* [Inspiration](#inspiration)
-* [Contact](#contact)
+1. [General info](#general-info)
+2. [Technologies](#technologies)
+3. [Setup](#setup)
+4. [Features](#features)
+5. [Inspiration](#inspiration)
+6. [Contact](#contact)
 
 ## General info
 
@@ -22,10 +22,10 @@ Movie Search Web App helps you search any movies or movie casts that you might b
 ## Technologies
 Project is create with:
 
-*React 17.0.2
-*Redux 4.1.0
-*Redux-persist 6.0.0
-*Styled-components 5.2.3
+* React 17.0.2
+* Redux 4.1.0
+* Redux-persist 6.0.0
+* Styled-components 5.2.3
 
 
 ## Setup
@@ -33,15 +33,33 @@ To run this project, install it locally using the pakage managers either [yarn](
 
 ```
 yarn
+yarn start
+
+or
 
 npm install
+npm start
+
+
 
 ```
 You need an API Key of [TMDB](https://www.themoviedb.org/) to run this project.
 
 ## Features
-*Get essential and necessay movie and cast information easy and fast.
-*Make your own movie list by saving the movie information in your local storage.
+* Get essential and necessay movie and cast information easy and fast.
+* Make your own movie list by saving the movie information in your local storage.
+
+
+## Screenshots
+
+![Screenshot2](ProjectScreenshots/screenshot2.png)
+
+![Screenshot3](ProjectScreenshots/screenshot3.png)
+
+![Screenshot4](ProjectScreenshots/screenshot4.png)
+
+![Screenshot5](ProjectScreenshots/screenshot5.png)
+
 
 ## Inspiration
 This app is inspired by online movie streaming platforms such as Netflix, Amazon Prime and Disney+
