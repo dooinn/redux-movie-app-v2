@@ -74,7 +74,7 @@ You need an API Key of [TMDB](https://www.themoviedb.org/) to run this project.
 This app is inspired by online movie streaming platforms such as Netflix, Amazon Prime and Disney+
 
 ## Contact
-Email: kimdooinn1@gmail.com
+Email: kimdooinn1@gmail.com /
 [linkedin](https://www.linkedin.com/in/dooinnkim/)
 
 
