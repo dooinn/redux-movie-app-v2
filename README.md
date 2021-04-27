@@ -60,11 +60,13 @@ You need an API Key of [TMDB](https://www.themoviedb.org/) to run this project.
 * My movie list
 ![Screenshot4](ProjectScreenshots/screenshot4.png)
 
-*Movie Detail page
+* Movie Detail page
 ![Screenshot5](ProjectScreenshots/screenshot5.png)
 
+* Cast modal 
 ![Screenshot6](ProjectScreenshots/screenshot6.png)
 
+* Cast info and credits
 ![Screenshot7](ProjectScreenshots/screenshot7.png)
 
 
