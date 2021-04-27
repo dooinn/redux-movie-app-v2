@@ -96,7 +96,7 @@ const Detail = ({ match }) => {
                         >
                             <p className="save__text">Add to My Favorites</p>
                             {
-                                favorites.map(item => item.id === detail.id).indexOf(id) ?
+                                favorites.map(item => item.id === detail.id).indexOf(detail.id) ?
                                     <MdBookmark style={{ color: "red", fontSize: "4rem" }} /> :
                                     <MdBookmark style={{ color: "white", fontSize: "4rem" }} />
                             }
@@ -143,7 +143,7 @@ const Detail = ({ match }) => {
                             {trailer.loading ?
                                 <LoadingBox></LoadingBox> :
                                 <div className="video__container" >
-                                    {/* {trailer.video &&
+                                    {trailer.video &&
                                         <ReactPlayer
                                             className="video__player"
                                             url={YOUTUBE_URL + trailer.video.key}
@@ -151,7 +151,7 @@ const Detail = ({ match }) => {
                                             width="100%"
 
                                         />
-                                    } */}
+                                    }
                                 </div>
                             }
 

@@ -80,7 +80,7 @@ margin-top: 5rem;
     justify-content: center;
 }
 
-.cast-wrap::-webkit-scrollbar{
+.casts__wrap::-webkit-scrollbar{
     display: none;
 }
   
@@ -202,7 +202,7 @@ transition: 0.3s;
     align-items: center;
 }
 
-.cast-wrap::-webkit-scrollbar{
+.casts__wrap::-webkit-scrollbar{
 display: hidden;
 }
 
