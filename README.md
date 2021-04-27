@@ -10,11 +10,13 @@ Use the pakage manager [yarn](https://classic.yarnpkg.com/en/docs/install/#mac-s
 ```bash
 yarn
 
-```bash
 npm install
 
 
-## Functionalities presented in this app.
+
+
+##Skills used
+
 
 
 
