@@ -15,7 +15,7 @@ Simple movie search web app created with React & Redux.
 
 ## General info
 
-This is a part of my porfolio projects in order to practice Redux and Custom hooks.
+This is a part of my web development porfolio projects in order to practice Redux and Custom hooks.
 
 Movie Search Web App helps you search any movies or movie casts that you might be curious about while you wathcing movies. For example, let's say you watch Titanic and you don't remeber the names of the casts. Then, this app easily and rapidly help you find the casts of Titanic as well as each casts' movie credits.
 
