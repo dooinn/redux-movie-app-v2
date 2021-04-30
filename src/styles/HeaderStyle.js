@@ -251,12 +251,7 @@ color: white;
     cursor:pointer;
 }
 
-.category__container a{
 
-    padding:0.2rem 1rem;
-
-  
-}
 
 }
 

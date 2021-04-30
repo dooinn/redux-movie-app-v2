@@ -13,6 +13,7 @@ import { GetActor } from '../api'
 const Detail = ({ match }) => {
 
     const [actor, setActor] = useState({})
+    const [include, setInclude] = useState(false);
 
     const POSTER_URL = 'https://image.tmdb.org/t/p/original/';
     const PORTRAIT_URL = 'https://image.tmdb.org/t/p/w200';
@@ -25,7 +26,7 @@ const Detail = ({ match }) => {
     const casts = useSelector(state => state.MovieCasts)
     const similar = useSelector(state => state.SimilarMovie)
     const favorites = useSelector(state => state.Favorite);
-    // const actor = useSelector(state => state.PersonDetail)
+
 
 
     useEffect(() => {
@@ -62,9 +63,11 @@ const Detail = ({ match }) => {
         fetchAPI();
     }, [params.id]);
 
-    const bookMark = (movie) => {
-        favorites.map(movie => movie.id).indexOf(movie.id);
-    }
+    useEffect(() => {
+        // id만 우선 남기고 해당 영화의 아이디가 포함되어 있는지 여부를 확인한다.
+        const isInclude = (favorites.map(item => item.id).indexOf(params.id * 1) === -1) ? false : true;
+        setInclude(isInclude);
+    }, [favorites]);
 
     return (
         <Section>
@@ -94,11 +97,19 @@ const Detail = ({ match }) => {
                             className="save__btn"
                             onClick={() => addMovieToWatchlist(detail)}
                         >
-                            <p className="save__text">Add to My Favorites</p>
+
                             {
-                                favorites.map(item => item.id === detail.id).indexOf(detail.id) ?
-                                    <MdBookmark style={{ color: "red", fontSize: "4rem" }} /> :
-                                    <MdBookmark style={{ color: "white", fontSize: "4rem" }} />
+                                include ?
+                                    <>
+                                        <p className="save__text">Saved</p>
+                                        <MdBookmark style={{ color: "red", fontSize: "4rem" }} />
+                                    </> :
+                                    <>
+                                        <p className="save__text">Add to My Favorites</p>
+                                        <MdBookmark style={{ color: "white", fontSize: "4rem" }} />
+                                    </>
+
+
                             }
 
                         </button>

@@ -167,7 +167,7 @@ transition: 0.3s;
 
     .poster__background{
     width: 100%;
-    height: 40rem;
+    height: 65rem;
     object-fit: cover;
     object-position: center;
     position: relative;
